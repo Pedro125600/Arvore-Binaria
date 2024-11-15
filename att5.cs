@@ -239,26 +239,20 @@ namespace att1_
         }
         private int AlturaArvore(No i)
         {
-            int contEsq = 0;
-            int contDir = 0;
+             if(i == null) { return 0; }
 
-            while (i != null)
+            int altesq = AlturaArvore(i.Esq);
+            int altdir = AlturaArvore(i.Dir);
+
+            if (altesq > altdir)
             {
-                i = i.Esq;
-                contEsq++;
-            }
 
-            i = raiz;
-
-            while (i != null)
+                return 1 + altesq;
+              }
+            else
             {
-                i = i.Dir;
-                contDir++;
+                return 1 + altdir;
             }
-
-            if (contEsq > contDir)
-                return contEsq;
-            else return contDir;
 
         }
 
